@@ -1,0 +1,13 @@
+language: csharp
+solution: AntiLock.sln
+deploy:
+  provider: releases
+  api_key:
+    secure: TNTxKfiRdQlMEzR1ACxS/LGHV45wz85G1Jeyj5MYBKbuAVTxOObOVSZAvj0Otf5LhMDR9jSe5KuRSiv14uNP2d2bdnAAAlhkvVoAuqnLHs49nShAh8TJW++hRbOgVE99ESfjHuyw9ngGnxtZKBhyNV+hF0tHuzHrryJNcgFrvOSeGRw7Ia9PNrH3gJhAJcQlh1DoIO/ur+pyA5Z6Z+u96lXQYsYaB0pgDL6D/1zHnWIdiSK9KQLNQlyBdD/4EIQEcbNEtRq2pUEAoEvNuJct7bNsvjMVllmskq8l8fEMbSDOCova8mQ4Y3nxCRieVix1zGgfWVEGOCsPvBN5i7YXuKJVEs7IheRUIfsKoknhg/IWTxwm01czhZ57bJuPWci4BFm09+Uu9ci8aofari65cTYNuzrBnj2PAveG3miarUCgoTuXGRYheyZKFzNseqLXOyvwTjIAiCKHAZ/t4P3aPPc8pIfrVb4/foN7Bpgqj3SZ3sogxUEMkqZ7OUgqsQTxk9MykoRbzC1KrrewhOA05+9+aKuIDG1ivqYIH//zK8Piav90y+nqYBAxgXEq/MUTwJM2Bi3zfaM1EZHibG9NNYbtYUOzcw9W+fSiB7Iqnm1rQuHvl9Cq9BPrxbTjxim+g9GzZFfdcX0ngJ1FtJwold+aYOwCw61reNkkHR6KIC4=
+  file:
+    - AntiLock/bin/Release/AntiLock.dll
+    - Libraries/0Harmony.dll
+  on:
+    tags: true
+  skip_cleanup: true
+  release_notes: Please add 0Harmony.dll to your server's Rocket/Libraries directory.
