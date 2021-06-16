@@ -7,9 +7,9 @@
     <ProjectGuid>{008F5D92-3F12-4851-9EF3-19F9086C51E9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExtraConcentratedJuice.AntiLock</RootNamespace>
+    <RootNamespace>AntiLock</RootNamespace>
     <AssemblyName>AntiLock</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,31 +30,35 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=1.0.9.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony_new">
+      <HintPath>..\0Harmony_new.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\Steam\steamapps\common\U3DS\Unturned_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\Assembly-CSharp-firstpass.dll</HintPath>
+    <Reference Include="Rocket.API">
+      <HintPath>..\Rocket.API.dll</HintPath>
     </Reference>
-    <Reference Include="Rocket.API, Version=2.6.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\Rocket.API.dll</HintPath>
+    <Reference Include="Rocket.Core">
+      <HintPath>..\Rocket.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Rocket.Core, Version=2.4.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\Rocket.Core.dll</HintPath>
+    <Reference Include="Rocket.Unturned">
+      <HintPath>..\Rocket.Unturned.dll</HintPath>
     </Reference>
-    <Reference Include="Rocket.Unturned, Version=4.9.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\Rocket.Unturned.dll</HintPath>
+    <Reference Include="SDG.Glazier.Runtime">
+      <HintPath>..\..\..\Steam\steamapps\common\U3DS\Unturned_Data\Managed\SDG.Glazier.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="SDG.NetPak.Runtime">
+      <HintPath>..\..\..\Steam\steamapps\common\U3DS\Unturned_Data\Managed\SDG.NetPak.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="SDG.NetTransport">
+      <HintPath>..\..\..\Steam\steamapps\common\U3DS\Unturned_Data\Managed\SDG.NetTransport.dll</HintPath>
+    </Reference>
+    <Reference Include="Steamworks.NET">
+      <HintPath>..\..\..\Steam\steamapps\common\U3DS\Unturned_Data\Managed\Steamworks.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,23 +66,21 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\Steam\steamapps\common\U3DS\Unturned_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\Libraries\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\Steam\steamapps\common\U3DS\Unturned_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\Libraries\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>..\..\..\Steam\steamapps\common\U3DS\Unturned_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AntiLock.cs" />
-    <Compile Include="AntiLockConfiguration.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="AskVehicleLockOverride.cs" />
     <Compile Include="CommandClearLocks.cs" />
-    <Compile Include="LockGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
