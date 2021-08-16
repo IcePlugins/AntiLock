@@ -8,6 +8,7 @@ using SDG.Unturned;
 using static AntiLock.Main;
 using System;
 using Steamworks;
+using System.Linq;
 
 namespace AntiLock
 {
@@ -55,21 +56,13 @@ namespace AntiLock
         }
 
         /// <returns>Amount of cleared locks</returns>
-        int ClearLocks(UnturnedPlayer up)
-        {
-            int count = 0;
-            if (up != null)
+        int ClearLocks(UnturnedPlayer up) => up != null ?
+            VehicleManager.vehicles.Select(v =>
             {
-                foreach (var v in VehicleManager.vehicles)
-                {
-                    if (v.lockedOwner == up.CSteamID && v.isLocked)
-                    {
-                        VehicleManager.ServerSetVehicleLock(v, CSteamID.Nil, CSteamID.Nil, false);
-                        count++;
-                    }
-                }
-            }
-            return count;
-        }
+                var unlock = v.lockedOwner == up.CSteamID && v.isLocked;
+                if (unlock)
+                    VehicleManager.ServerSetVehicleLock(v, CSteamID.Nil, CSteamID.Nil, false);
+                return unlock ? 1 : 0;
+            }).Sum() : 0;
     }
 }

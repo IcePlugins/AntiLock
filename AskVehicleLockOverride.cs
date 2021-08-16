@@ -25,7 +25,7 @@ namespace AntiLock
             if (!vehicle?.checkDriver(steamID) ?? true) // not in the vehicle or aren't a driver
                 return false;
 
-            if (vehicle.isLocked)
+            if (vehicle.isLocked) // locked
                 return true;
 
             var group = conf.LockGroups
@@ -34,11 +34,11 @@ namespace AntiLock
                 .LastOrDefault();
 
             int max = group == null ? conf.DefaultMaxLocks : group.MaxLocks;
-            int count = VehicleManager.vehicles.Count(x => x.lockedOwner == steamID && x.isLocked);
+            int lockedVehiclesCount = VehicleManager.vehicles.Count(x => x.lockedOwner == steamID && x.isLocked);
 
-            var maxLocks = count >= max && conf.DisplayMaxlocksNotice;
+            var maxLocks = lockedVehiclesCount >= max && conf.DisplayMaxlocksNotice; // is locked max value of vehicles
             var msg = maxLocks ? inst.Translate(MaxLockedNotice, max) :
-                    (conf.DisplayLockNotice ? inst.Translate(LockedNotice, max - count - 1, max) : null);
+                    (conf.DisplayLockNotice ? inst.Translate(LockedNotice, max - lockedVehiclesCount - 1, max) : null);
             var color = maxLocks ? Color.red : Color.green;
 
             UnturnedChat.Say(up, msg, color);
