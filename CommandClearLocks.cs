@@ -5,10 +5,10 @@ using UnityEngine;
 using Rocket.Core;
 using Rocket.Unturned.Player;
 using SDG.Unturned;
-using static AntiLock.Main;
 using System;
 using Steamworks;
 using System.Linq;
+using static AntiLock.Main;
 
 namespace AntiLock
 {
@@ -38,13 +38,14 @@ namespace AntiLock
             var color = Color.green;
             try
             {
-                if (args.Length == 1)
+                if (args.Length > 0)
                 {
                     if (!caller.HasPermission(conf.AllowOtherPermission))
                         throw new ArgumentException(R.Translate(NoPermission));
 
-                    var other = UnturnedPlayer.FromName(args[0]);
-                    if (other == null)
+                    var name = string.Join(" ", args);
+                    var other = UnturnedPlayer.FromName(name);
+                    if (other is null)
                         throw new ArgumentException(inst.Translate(PlayerNotFound));
 
                     target = other;

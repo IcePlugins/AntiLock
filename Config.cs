@@ -15,6 +15,7 @@ namespace AntiLock
     {
         public int DefaultMaxLocks = 0;
         public bool 
+            DisplayLoadMessage = true,
             IgnoreAdmins = true,
             DisplayMaxlocksNotice = true,
             DisplayLockNotice = true;

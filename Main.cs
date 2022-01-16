@@ -8,7 +8,7 @@ namespace AntiLock
     public class Main : RocketPlugin<Config>
     {
         public static Main Instance;
-        Harmony hInstance;
+        Harmony Harmony;
         internal static Main inst => Instance;
         internal static Config conf => Instance.Configuration.Instance;
 
@@ -16,19 +16,21 @@ namespace AntiLock
         {
             Instance = this;
 
-            hInstance = new Harmony("antilock.harmony");
+            Harmony = new Harmony("antilock.harmony");
+            Harmony.PatchAll();
 
-            Logger.Log($"Loaded AntiLock! Default locks allocated: {conf.DefaultMaxLocks}");
-            Logger.Log("Groups:");
-            foreach (var group in conf.LockGroups)
-                Logger.Log($" {group.Permission} | {group.MaxLocks} locks");
-
-            hInstance.PatchAll();
+            if (conf.DisplayLoadMessage)
+            {
+                Logger.Log($"Loaded AntiLock! Default locks allocated: {conf.DefaultMaxLocks}");
+                Logger.Log("Groups:");
+                foreach (var group in conf.LockGroups)
+                    Logger.Log($" {group.Permission} | {group.MaxLocks} locks");
+            }
         }
 
         protected override void Unload()
         {
-            hInstance.UnpatchAll();
+            Harmony.UnpatchAll(Harmony.Id);
         }
 
         public const string
